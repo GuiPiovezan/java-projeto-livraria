@@ -1,7 +1,7 @@
 package br.com.livraria.controller;
 
-import br.com.livraria.model.Pessoa;
-import br.com.livraria.service.PessoaService;
+import br.com.livraria.model.Juridica;
+import br.com.livraria.service.JuridicaService;
 
 import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
@@ -10,18 +10,21 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.net.URI;
 
-@Path("/pessoas")
+@Path("/juridica")
 public class PessoaResource {
 
     @Inject
-    PessoaService service;
+    JuridicaService service;
 
     @POST
     @PermitAll
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
-    public void inserir(Pessoa pessoa) {
-        service.adiciona(pessoa);
+    public Response inserir(Juridica juridica) {
+        service.adiciona(juridica);
+        return Response.created(URI.create("/juridica")).build();
     }
 }

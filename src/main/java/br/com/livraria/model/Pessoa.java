@@ -1,21 +1,30 @@
 package br.com.livraria.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 
 @Entity
-public class Pessoa {
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "pessoa")
+public abstract class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String nome;
-    private String logradouro;
-    private String numero;
-    private String bairro;
+    protected String nome;
+    protected String logradouro;
+    protected String numero;
+    protected String bairro;
+
+    public Pessoa(){};
+
+    public Pessoa(String nome, String logradouro, String numero, String bairro) {
+        this.nome = nome;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.bairro = bairro;
+    }
 
     public void setId(long id) {
         this.id = id;
@@ -53,8 +62,4 @@ public class Pessoa {
         this.bairro = bairro;
     }
 
-    /*public static void adiciona(Pessoas pessoa) {
-        PessoaService service = new PessoaService();
-        service.adiciona(pessoa);
-    }*/
 }
