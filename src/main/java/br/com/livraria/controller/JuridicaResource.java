@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
 import java.net.URI;
 
 @Path("/juridica")
-public class PessoaResource {
+public class JuridicaResource {
 
     @Inject
     JuridicaService service;
