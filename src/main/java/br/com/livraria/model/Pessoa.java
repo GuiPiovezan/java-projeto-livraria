@@ -62,4 +62,7 @@ public abstract class Pessoa {
         this.bairro = bairro;
     }
 
+    public Long getId() {
+        return id;
+    }
 }
