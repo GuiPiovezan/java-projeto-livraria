@@ -7,7 +7,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "juridica")
 @PrimaryKeyJoinColumn(name="id")
-public class Juridica extends Pessoa{
+public abstract class Juridica extends Pessoa{
 
     private String cnpj;
 

@@ -1,7 +1,8 @@
 package br.com.livraria.controller;
 
+import br.com.livraria.model.Editora;
 import br.com.livraria.model.Juridica;
-import br.com.livraria.service.JuridicaService;
+import br.com.livraria.service.EditoraService;
 
 import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
@@ -12,32 +13,31 @@ import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.util.List;
 
-@Path("/juridica")
-public class JuridicaResource {
+@Path("/editoras")
+public class EditoraResource {
 
     @Inject
-    JuridicaService service;
+    EditoraService service;
 
     @POST
     @PermitAll
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response inserir(Juridica juridica) {
-        service.adiciona(juridica);
-        return Response.created(URI.create("/juridica")).build();
+    public Response inserir(Editora editora) {
+        service.adiciona(editora);
+        return Response.created(URI.create("/editoras")).build();
     }
-
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Juridica listarId(@PathParam("id") Long id){
+    public Editora listarId(@PathParam("id") Long id){
         return service.listarId(id);
     }
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public List<Juridica> listar(){
+    public List<Editora> listar(){
         return service.listar();
     }
 
@@ -46,5 +46,13 @@ public class JuridicaResource {
     @Transactional
     public void deletar(@PathParam("id") Long id){
         service.deletar(id);
+    }
+
+
+    @PUT
+    @Transactional
+    @Path("{id}")
+    public Editora alterar(@PathParam("id") Long id, Editora editora){
+       return service.altera(id, editora);
     }
 }
