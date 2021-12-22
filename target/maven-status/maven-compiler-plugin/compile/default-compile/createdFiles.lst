@@ -1,0 +1,8 @@
+br\com\livraria\controller\FuncionarioResource.class
+br\com\livraria\service\FuncionarioService.class
+br\com\livraria\model\Fisica.class
+br\com\livraria\model\Juridica.class
+META-INF\panache-archive.marker
+br\com\livraria\model\Funcionario.class
+br\com\livraria\model\Pessoa.class
+br\com\livraria\repository\FuncionarioRepository.class
