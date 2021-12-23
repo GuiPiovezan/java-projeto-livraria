@@ -26,10 +26,6 @@ public abstract class Pessoa {
         this.bairro = bairro;
     }
 
-    public long getId() {
-        return id;
-    }
-
     public String getNome() {
         return nome;
     }
