@@ -15,8 +15,6 @@ public class FuncionarioService {
     @Inject
     FuncionarioRepository funcionarioRepository;
 
-    Funcionario funcionario;
-
     public void adicionar(Funcionario funcionario){
         funcionarioRepository.persist(funcionario);
     }
@@ -29,8 +27,9 @@ public class FuncionarioService {
         return funcionarioRepository.findById(id);
     }
 
+
     public void deletar(Long id){
-        funcionario = funcionarioRepository.findById(id);
+        Funcionario funcionario = funcionarioRepository.findById(id);
 
         if(funcionario == null){
             throw new NotFoundException();
@@ -39,13 +38,24 @@ public class FuncionarioService {
         funcionarioRepository.deleteById(id);
     }
 
-    public void alterar(Long id){
-        funcionario = funcionarioRepository.findById(id);
+    public List<Funcionario> listAll() {
+        return funcionarioRepository.listAll();
+
+    }
+
+    public Funcionario alterar(Long id, Funcionario funcionario){
+        Funcionario funcionarioPesquisado = funcionarioRepository.findById(id);
 
         if(funcionario == null){
-            throw new NotFoundException();
+            throw new NotFoundException("Funcionario não existe");
         }
 
-        funcionarioRepository.update(Long id);
+        funcionarioPesquisado.setNome(funcionario.getNome());
+        funcionarioPesquisado.setLogradouro(funcionario.getLogradouro());
+        funcionarioPesquisado.setNumero(funcionario.getNumero());
+        funcionarioPesquisado.setBairro(funcionario.getBairro());
+        funcionarioPesquisado.setCpf(funcionario.getCpf());
+
+        return funcionarioPesquisado;
     }
 }
