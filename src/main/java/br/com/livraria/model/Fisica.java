@@ -6,9 +6,9 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
-public class Fisica extends Pessoa{
+public abstract class Fisica extends Pessoa{
 
-    private String cpf;
+    protected String cpf;
 
     public String getCpf() {
         return cpf;
