@@ -55,6 +55,8 @@ public class FuncionarioService {
         funcionarioPesquisado.setNumero(funcionario.getNumero());
         funcionarioPesquisado.setBairro(funcionario.getBairro());
         funcionarioPesquisado.setCpf(funcionario.getCpf());
+        funcionarioPesquisado.setCargo(funcionario.getCargo());
+        funcionarioPesquisado.setSalario(funcionario.getSalario());
 
         return funcionarioPesquisado;
     }
