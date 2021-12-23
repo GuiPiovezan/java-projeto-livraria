@@ -3,8 +3,10 @@ package br.com.livraria.controller;
 import br.com.livraria.model.Editora;
 import br.com.livraria.model.Juridica;
 import br.com.livraria.service.EditoraService;
+import io.quarkus.elytron.security.common.BcryptUtil;
 
 import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
@@ -43,6 +45,7 @@ public class EditoraResource {
 
     @DELETE
     @Path("{id}")
+    @RolesAllowed("admin")
     @Transactional
     public void deletar(@PathParam("id") Long id){
         service.deletar(id);

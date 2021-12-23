@@ -2,6 +2,7 @@ package br.com.livraria.service;
 
 import br.com.livraria.model.Editora;
 import br.com.livraria.repository.EditoraRepository;
+import io.quarkus.elytron.security.common.BcryptUtil;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -19,6 +20,7 @@ public class EditoraService {
     Editora editora;
 
     public void adiciona(Editora editora){
+        editora.adicionar(editora);
         editoraRepository.persist(editora);
     }
 
