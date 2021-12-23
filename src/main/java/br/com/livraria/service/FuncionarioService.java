@@ -39,13 +39,14 @@ public class FuncionarioService {
         funcionarioRepository.deleteById(id);
     }
 
-    public void alterar(Long id){
+    /*public void alterar(Long id, Funcionario funcionario){
         funcionario = funcionarioRepository.findById(id);
 
         if(funcionario == null){
             throw new NotFoundException();
         }
 
-        funcionarioRepository.update(Long id);
-    }
+
+        funcionarioRepository.update(id);
+    }*/
 }

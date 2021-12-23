@@ -29,5 +29,4 @@ public class FuncionarioResource {
         return  Response.created(URI.create("/funcionario")).build();
     }
 
-    public Funcionario update(@PathParam("id") Long id, Person )
 }
