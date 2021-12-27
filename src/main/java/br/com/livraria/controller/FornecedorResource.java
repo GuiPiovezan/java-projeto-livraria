@@ -13,7 +13,7 @@ import java.net.URI;
 import java.util.List;
 
 @Path("/fornecedor")
-public class FornecedorResource {
+public class  FornecedorResource {
 
     @Inject
     FornecedorService service;

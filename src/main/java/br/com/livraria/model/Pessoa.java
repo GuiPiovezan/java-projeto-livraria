@@ -105,4 +105,8 @@ public abstract class Pessoa {
         }
         return "user";
     }
+
+    public Long getId() {
+        return id;
+    }
 }

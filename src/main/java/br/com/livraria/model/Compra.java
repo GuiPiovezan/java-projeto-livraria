@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Compra{
@@ -22,6 +23,13 @@ public class Compra{
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
+
+    @ManyToMany
+    @JoinTable(name = "compra_produto", joinColumns = {
+            @JoinColumn(name = "compra_id")},
+        inverseJoinColumns = { @JoinColumn( name = "produto_id")}
+    )
+    private List<Produto> produtos;
 
 
     public int getCodigo() {
@@ -60,7 +68,5 @@ public class Compra{
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+    public Funcionario getFuncionario(){ return  funcionario;}
 }

@@ -2,6 +2,7 @@ package br.com.livraria.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
@@ -20,8 +21,12 @@ public class Produto {
 
     private String descricao;
 
-    @Column(name = "fornecedor_id")
-    private long fornecedorId;
+    @ManyToOne
+    @JoinColumn(name = "fornecedor_id")
+    private Fornecedor fornecedor;
+
+    @ManyToMany(mappedBy = "produtos")
+    private List<Compra> compras;
 
     public long getId() {
         return id;
@@ -63,11 +68,7 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public long getFornecedorId() {
-        return fornecedorId;
-    }
-
-    public void setFornecedorId(long fornecedorId) {
-        this.fornecedorId = fornecedorId;
+    public Fornecedor getFornecedor() {
+        return fornecedor;
     }
 }

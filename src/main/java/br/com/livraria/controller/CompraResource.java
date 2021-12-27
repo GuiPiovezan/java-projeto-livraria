@@ -7,6 +7,7 @@ import br.com.livraria.service.CompraService;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
@@ -26,5 +27,11 @@ public class CompraResource {
         service.adiciona(compra);
         return Response.created(URI.create("/compra")).build();
     }
+
+//    @DELETE
+//    @Path("/{id}")
+//    @Transactional
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response delete ()
 
 }

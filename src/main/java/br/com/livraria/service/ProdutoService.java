@@ -1,6 +1,7 @@
 package br.com.livraria.service;
 
 import br.com.livraria.model.Produto;
+import br.com.livraria.repository.FornecedorRepository;
 import br.com.livraria.repository.ProdutoRepository;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -19,6 +20,8 @@ public class ProdutoService {
     EntityManager entityManager;
 
     public void adicionar(Produto produto){
+        FornecedorRepository fornecedorRepository = new FornecedorRepository();
+        fornecedorRepository.findById(produto.getFornecedor().getId());
         produtoRepository.persist(produto);
     }
 
