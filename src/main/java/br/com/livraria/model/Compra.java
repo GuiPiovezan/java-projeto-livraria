@@ -24,13 +24,8 @@ public class Compra{
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
 
-    @ManyToMany
-    @JoinTable(name = "compra_produto", joinColumns = {
-            @JoinColumn(name = "compra_id")},
-        inverseJoinColumns = { @JoinColumn( name = "produto_id")}
-    )
+    @ManyToMany(mappedBy = "compras", cascade = CascadeType.ALL)
     private List<Produto> produtos;
-
 
     public int getCodigo() {
         return codigo;
@@ -69,4 +64,12 @@ public class Compra{
     }
 
     public Funcionario getFuncionario(){ return  funcionario;}
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
 }

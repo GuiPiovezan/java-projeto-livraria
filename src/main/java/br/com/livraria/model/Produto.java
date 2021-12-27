@@ -25,10 +25,19 @@ public class Produto {
     @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
 
-    @ManyToMany(mappedBy = "produtos")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "produto_compra",
+            joinColumns = {
+                    @JoinColumn(name = "produto_id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn( name = "compra_id")
+            }
+    )
     private List<Compra> compras;
 
-    public long getId() {
+
+    public Long getId() {
         return id;
     }
 
@@ -70,5 +79,9 @@ public class Produto {
 
     public Fornecedor getFornecedor() {
         return fornecedor;
+    }
+
+    public List<Compra> getCompras() {
+        return compras;
     }
 }
