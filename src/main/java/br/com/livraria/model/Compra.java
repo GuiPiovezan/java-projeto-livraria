@@ -19,6 +19,11 @@ public class Compra{
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")
+    private Funcionario funcionario;
+
+
     public int getCodigo() {
         return codigo;
     }
