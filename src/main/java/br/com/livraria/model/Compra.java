@@ -16,6 +16,7 @@ public class Compra{
     private BigDecimal total;
 
     @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     public int getCodigo() {
