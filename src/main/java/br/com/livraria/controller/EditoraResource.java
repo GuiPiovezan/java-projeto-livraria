@@ -53,8 +53,9 @@ public class EditoraResource {
 
 
     @PUT
-    @Transactional
     @Path("{id}")
+    @RolesAllowed("admin")
+    @Transactional
     public Editora alterar(@PathParam("id") Long id, Editora editora){
        return service.altera(id, editora);
     }
