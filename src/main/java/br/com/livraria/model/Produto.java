@@ -15,9 +15,9 @@ public class Produto {
 
     private BigDecimal preco;
 
-    private String tipoProduto;
+    private String tipo;
 
-    private int qtdProduto;
+    private int quantidade;
 
     private String descricao;
 
@@ -53,20 +53,20 @@ public class Produto {
         this.preco = preco;
     }
 
-    public String getTipoProduto() {
-        return tipoProduto;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipoProduto(String tipoProduto) {
-        this.tipoProduto = tipoProduto;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public int getQtdProduto() {
-        return qtdProduto;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setQtdProduto(int qtdProduto) {
-        this.qtdProduto = qtdProduto;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public String getDescricao() {

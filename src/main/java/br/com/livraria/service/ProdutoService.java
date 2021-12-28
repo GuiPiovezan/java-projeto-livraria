@@ -34,13 +34,12 @@ public class ProdutoService {
     }
 
     public List<Produto> listarTipo(String tipo){
-        Produto produto = new Produto();
-        return produtoRepository.list(tipo, produto.getTipoProduto());
+        return produtoRepository.list("tipo", tipo);
     }
 
     public Produto listarNomeProduto(String descricao){
         String descricaoAlt = descricao.replace("-"," ");
-        return entityManager.createQuery("FROM Produto WHERE nome = :nome", Produto.class).setParameter("nome", descricaoAlt).getSingleResult();
+        return entityManager.createQuery("SELECT P FROM Produto AS P WHERE descricao = :descricao", Produto.class).setParameter("descricao", descricaoAlt).getSingleResult();
     }
 
     public void deletar(long id){
@@ -60,8 +59,8 @@ public class ProdutoService {
         }
 
         produtoUp.setDescricao(produto.getDescricao());
-        produtoUp.setQtdProduto(produto.getQtdProduto());
-        produtoUp.setTipoProduto(produto.getTipoProduto());
+        produtoUp.setQuantidade(produto.getQuantidade());
+        produtoUp.setTipo(produto.getTipo());
         produtoUp.setPreco(produto.getPreco());
 
         return produtoUp;

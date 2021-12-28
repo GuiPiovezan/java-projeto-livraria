@@ -48,7 +48,7 @@ public class ProdutoResource {
     }
 
     @GET
-    @Path("/search/{descricao}")
+    @Path("/searchName/{descricao}")
     @Produces(MediaType.APPLICATION_JSON)
     public Produto listarNomeProduto(@PathParam("descricao") String descricao){
         return service.listarNomeProduto(descricao);
