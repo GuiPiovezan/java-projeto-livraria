@@ -2,6 +2,8 @@ package br.com.livraria.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -15,6 +17,10 @@ public class Livro {
     private LocalDate anoPublicacao;
     private Long qtd;
     private BigDecimal preco;
+
+    @ManyToOne
+    @JoinColumn(name = "autor_id")
+    private Autor autor;
 
     public Livro(){};
 
@@ -64,5 +70,13 @@ public class Livro {
 
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
     }
 }

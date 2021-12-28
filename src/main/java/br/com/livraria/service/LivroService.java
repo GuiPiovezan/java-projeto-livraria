@@ -1,6 +1,7 @@
 package br.com.livraria.service;
 
 import br.com.livraria.model.Livro;
+import br.com.livraria.repository.AutorRepository;
 import br.com.livraria.repository.LivroRepository;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -18,17 +19,10 @@ public class LivroService {
     Livro livro;
 
     public void adiciona(Livro livro) {
-
-        if(livro.getIsbn().toString().length() != 13){
-            try {
-                throw new Exception("O código ISBN deve conter o tamanho de 13 digitos");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        AutorRepository autorRepository = new AutorRepository();
+        autorRepository.findById(livro.getAutor().getCodigo());
 
         livro.setAnoPublicacao(LocalDate.now());
-
         repository.persist(livro);
     }
 
@@ -58,13 +52,6 @@ public class LivroService {
         }
 
         livroAlterar.setIsbn(livro.getIsbn());
-        if(livro.getIsbn().toString().length() != 13){
-            try {
-                throw new Exception("O código ISBN deve conter o tamanho de 13 digitos");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
         livroAlterar.setNome(livro.getNome());
         livroAlterar.setAnoPublicacao(livro.getAnoPublicacao());
         livroAlterar.setQtd(livro.getQtd());
